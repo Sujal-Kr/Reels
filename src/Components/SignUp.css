@@ -1,0 +1,22 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+.signupwrapper{
+    display: flex;
+    justify-content: center;
+}
+.card-cont{
+    width: 27vw;
+    margin-top:5rem;
+    padding:0 1.5rem;
+}
+.bottom-card{
+    margin: 2rem 0;
+    padding: 0.6rem 0;
+}
+a{
+    text-decoration: none;
+    color:purple ;
+}

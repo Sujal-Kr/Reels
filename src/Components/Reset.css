@@ -1,0 +1,10 @@
+.reset-wrapper{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border-radius: 12px;
+    margin:10rem auto;
+    display: flex;
+    flex-direction: column;
+    width: 27vw;
+    padding: 4rem 2rem;
+    gap:1rem;
+}
