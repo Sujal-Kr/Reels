@@ -28,12 +28,12 @@ function Like({userData,postData}) {
         console.log(postData.likes)
     }
   return (
-    <div>
+    <div style={{padding:"0.5rem",display:"flex",alignItems:"center"}}>
       {
         like!=null?
         <>
         {
-            like===true?<FavoriteIcon fontSize='medium' onClick={handleLike} className={`like `}/>:<FavoriteBorderIcon onClick={handleLike} fontSize='medium' className='unlike' />
+            like===true?<FavoriteIcon fontSize='medium' onClick={handleLike} className={`like `}/>:<FavoriteBorderIcon onClick={handleLike} fontSize='medium' className='unlike' style={{color:"black"}} />
         }
         </>:
         <></>

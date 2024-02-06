@@ -1,15 +1,13 @@
-import React,{useContext} from 'react'
-import { Routes,Route,Navigate } from 'react-router-dom'
+import React,{ useContext} from 'react'
+import {Navigate ,Outlet} from 'react-router-dom'
 import { AuthContext } from '../Context/Authcontext'
-import Feed from  './Feed'
+
 
 function PrivateRoute() {
     const {user} = useContext(AuthContext)
-    if (user) {
-      return <Feed/>
-    } else {
-      return <Navigate to="/login" replace />;
-    }
+    return(
+      user?<Outlet/>:<Navigate to="/login"/>
+    )
 }
 
 export default PrivateRoute

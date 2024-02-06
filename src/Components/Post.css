@@ -26,8 +26,8 @@
 }
 .icon-styling{
     position: absolute;
-    bottom: 150px;
-    right:20px;
+    bottom: 48px;
+    left:20px;
     border: 1px sold white;
     /* color:red; */
     margin:0.8rem 0;
@@ -40,8 +40,8 @@
 }
 .chat-styling{
     position: absolute;
-    bottom:120px;
-    right:20px;
+    bottom:60px;
+    left:50px;
     color:white;
 }
 .modal-video{
@@ -49,6 +49,14 @@
     justify-content: center;
     width: 50%;
 }
+.comment-cont{
+    padding: 1rem;
+    width: 50%;
+   
+}
 .modal-video video{
     height: 84vh;
+}
+.card1{
+    height: 73vh;
 }

@@ -3,6 +3,7 @@ import UploadFile from './UploadFile';
 import { AuthContext } from '../Context/Authcontext';
 import {database} from '../firebase';
 import Posts from './Posts';
+import Navbar from './Navbar';
 function Feed() {
   const {user,logout}=useContext(AuthContext)
   const [userData,setUserData] =useState('')
@@ -15,14 +16,17 @@ function Feed() {
     }
   },[user])
   return (
-    <div style={{display:'flex',flexDirection:'column',justifyContent:"center",alignItems:"center"}}>
-      <div style={{width:"50%"}}>
-      <h1>Welcome To Instagram </h1>
-      <button onClick={logout}> Logout</button>
-      </div>
-      <UploadFile user={userData}/>
-      <Posts userData={userData}/>
-    </div>
+      <>
+        <Navbar userData={userData}/>
+        <div style={{display:'flex',flexDirection:'column',justifyContent:"center",alignItems:"center"}}>
+          {/* <div style={{width:"50%"}}>
+          <h1>Welcome To Instagram </h1>
+          <button onClick={logout}> Logout</button>
+          </div> */}
+          <UploadFile user={userData}/>
+          <Posts userData={userData}/>
+        </div>
+      </>
   )
 }
 

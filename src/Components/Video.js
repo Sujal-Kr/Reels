@@ -15,7 +15,7 @@
             }
         }
     return (
-        <video  className='video-styling'  muted   onClick={handleClick} onEnded={handleScroll}>
+        <video  className='video-styling'  muted  onClick={handleClick} onEnded={handleScroll}>
             <source src={props.src} type="video/mp4" />
         </video>
     )

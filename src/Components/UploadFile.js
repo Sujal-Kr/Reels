@@ -55,8 +55,8 @@ function UploadFile(props) {
                     }
                     database.posts.add(obj).then(async(ref)=>{
 
-                        let res= await database.users.doc(props.user.userId).update({
-                            postIds:props.user.postIds!=null?[...props.user.postIds,ref.id]:[ref.id]
+                        await database.users.doc(props.user.userId).update({
+                        postIds:props.user.postIds!=null?[...props.user.postIds,ref.id]:[ref.id]
                         })
                     }).then(()=>{
                         setLoading(false)
@@ -72,7 +72,7 @@ function UploadFile(props) {
             }
     }
   return (
-    <div>
+    <div style={{marginTop:"5rem"}}>
       {error!=='' ? <Alert severity="error">{error}</Alert>:
         <>
             <input type="file" id="upload" accept='video/*' onChange={(e)=>handleChange(e.target.files[0])} style={{display:"none"}}/>

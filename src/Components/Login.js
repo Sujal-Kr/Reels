@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Alert  from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
-import  {Link, NavLink}  from 'react-router-dom';
+import  {Link}  from 'react-router-dom';
 import bg from '../Assests/back.png'
 import { CarouselProvider, Slider, Slide,Image } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';

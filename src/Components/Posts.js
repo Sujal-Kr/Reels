@@ -7,13 +7,11 @@ import './Post.css'
 import Like from './Like'
 import Like2 from './Like2';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import {CardActionArea, CardActions ,TextField} from '@mui/material';
+import AddComments from './AddComments';
+import Comments from './Comments';
 
 function Posts({ userData }) {
  
@@ -28,17 +26,38 @@ function Posts({ userData }) {
   }
   useEffect(() => {
     let parr = []
-    const unsub = database.posts.orderBy('createdAt', 'desc').onSnapshot((querySnapshot) => {
-      parr = []
-      querySnapshot.forEach((doc) => {
-        let data = { ...doc.data(), postId: doc.id }
-        parr.push(data)
-        setPosts(parr)
-        
+      const unsub =  database.posts.orderBy('createdAt', 'desc').onSnapshot((querySnapshot) => {
+        parr = []
+        querySnapshot.forEach((doc) => {
+          let data = { ...doc.data(), postId: doc.id }
+          parr.push(data)
+          setPosts(parr)
+          
+        })
+        return unsub()
       })
-      return unsub()
-    })
   },[])
+  const callback = (enteries)=>{
+    enteries.forEach((entry)=>{
+        let ele = entry.target.querySelector('video');
+        if (entry.isIntersecting) {
+            ele.play().catch((error) => console.error(error));
+        } else {
+            ele.pause();
+        }
+    })
+
+}
+  let observer = new IntersectionObserver(callback, {threshold:0.6})
+  useEffect(()=>{
+    const element = document.querySelectorAll(".videos")
+    element.forEach((item)=>{
+        observer.observe(item)
+    })
+    return ()=>{
+      observer.disconnect()
+    }
+  },[posts])
 
   return (
     <div>
@@ -71,11 +90,15 @@ function Posts({ userData }) {
                           <source src={post.pUrl} ></source>
                         </video>
                       </div>
-                      <div className="comment-cont">
-                        <Card variant="outlined" width="375">
+                      <div className="comment-cont" >
+                        <Card variant='oulined'className='card1' >
+                          <Comments postData={post}/>
+                        </Card>
                         <Typography >{post.likes.length===0?"":`Liked by ${post.likes.length} users`}</Typography>
-                        <div>
-                          <Like2 userData={userData} postData={post}/>
+                        <Card variant="outlined"  >
+                        <div style={{display:"flex",alignItems:"center",margin:"0.4rem"}}>
+                          <Like2 userData={userData} postData={post} />
+                          <AddComments userData={userData} postData={post}/>
                         </div>
                         </Card>
                       </div>
