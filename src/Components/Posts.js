@@ -5,6 +5,7 @@ import { database } from '../firebase'
 import Video from './Video'
 import './Post.css'
 import Like from './Like'
+import Like2 from './Like2';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -12,7 +13,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import {CardActionArea, CardActions } from '@mui/material';
+import {CardActionArea, CardActions ,TextField} from '@mui/material';
 
 function Posts({ userData }) {
  
@@ -35,10 +36,9 @@ function Posts({ userData }) {
         setPosts(parr)
         
       })
-
       return unsub()
     })
-  }, [])
+  },[])
 
   return (
     <div>
@@ -72,30 +72,11 @@ function Posts({ userData }) {
                         </video>
                       </div>
                       <div className="comment-cont">
-                        <Card sx={{ maxWidth: 345 }}>
-                          <CardActionArea>
-                            <CardMedia
-                              component="img"
-                              height="140"
-                              image="/static/images/cards/contemplative-reptile.jpg"
-                              alt="green iguana"
-                            />
-                            <CardContent>
-                              <Typography gutterBottom variant="h5" component="div">
-                                Lizard
-                              </Typography>
-                              <Typography variant="body2" color="text.secondary">
-                                Lizards are a widespread group of squamate reptiles, with over 6,000
-                                species, ranging across all continents except Antarctica
-                              </Typography>
-                            </CardContent>
-                          </CardActionArea>
-                          <CardActions>
-                            <Button size="small" color="primary" >
-                              Share
-                            </Button>
-                          </CardActions>
-                          <Typography >{post.likes.length===0?"":`Liked by ${post.likes.length} users`}</Typography>
+                        <Card variant="outlined" width="375">
+                        <Typography >{post.likes.length===0?"":`Liked by ${post.likes.length} users`}</Typography>
+                        <div>
+                          <Like2 userData={userData} postData={post}/>
+                        </div>
                         </Card>
                       </div>
                       </div>

@@ -33,7 +33,7 @@ function Like({userData,postData}) {
         like!=null?
         <>
         {
-            like===true?<FavoriteIcon fontSize='medium' onClick={handleLike} className={`like icon-styling`}/>:<FavoriteBorderIcon onClick={handleLike} fontSize='medium' className='icon-styling unlike' />
+            like===true?<FavoriteIcon fontSize='medium' onClick={handleLike} className={`like `}/>:<FavoriteBorderIcon onClick={handleLike} fontSize='medium' className='unlike' />
         }
         </>:
         <></>
@@ -42,4 +42,4 @@ function Like({userData,postData}) {
   )
 }
 
-export default Like
+export default Like 
